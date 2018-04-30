@@ -182,7 +182,42 @@ var modulo = function(x, y) {
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
+// what if negative
+
+// -2 x -2 = 4
+    // - 2
+    // + -1
+    // + -1
 var multiply = function(x, y) {
+  console.log('input', x, y)
+  if (y === 0 || x === 0) {
+    return 0;
+  }
+
+  if ((y === 1 && x > 1) || (y === -1 && x < -1)) {
+    console.log('return ', x)
+    return x;
+  }
+
+  if (y < 0 && x > 0) {
+    console.log('xxx');
+    return  x + multiply(x, y + 1);
+  }
+
+  if (x < 0 && y > 0) {
+    console.log('yyyy');
+    return y + multiply(x + 1, y);
+  }
+
+  if (x < 0 && y < 0) {
+    var what = (x + multiply(x, y + 1))
+    console.log('no', what); // both negative so not negative
+    return what;
+  }
+
+
+    console.log('yes');
+  return x + multiply(x, y - 1);
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
