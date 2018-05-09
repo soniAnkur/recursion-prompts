@@ -228,7 +228,6 @@ var gcd = function(x, y) {
     return null;
   }
 
-
   if (y === 0) {
     return x;
   }
@@ -241,7 +240,7 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
-  console.log('input', str1, str2)
+  // console.log('input', str1, str2)
   // if (str1.length !== str2.length) {
   //   return false;
   // }
@@ -264,16 +263,27 @@ var compareStr = function(str1, str2) {
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
+  //
+
+
+
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function(array) {
+  if (array.length === 1) {
+    return array;
+  }
+
+  return reverseArr(array.slice(1)).concat(array[0]);
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+
+
 };
 
 // 19. Implement FizzBuzz. Given integer n, return an array of the string representations of 1 to n.
@@ -288,6 +298,14 @@ var fizzBuzz = function(n) {
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+
+  var index = array.indexOf(value);
+
+  if (index === -1) {
+    return 0;
+  }
+
+  return 1 + countOccurrence(array.slice(index + 1), value);
 };
 
 // 21. Write a recursive version of map.
@@ -334,6 +352,15 @@ var nthFibo = function(n) {
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(array) {
+  if (array.length === 0) {
+    return [];
+  }
+
+  return [array[0].toUpperCase()]
+    .concat(
+      capitalizeWords(array.slice(1))
+    );
+
 };
 
 // 28. Given an array of strings, capitalize the first letter of each index.
@@ -356,6 +383,12 @@ var nestedEvenSum = function(obj) {
 // 30. Flatten an array containing nested arrays.
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
 var flatten = function(array) {
+  if (!array.isArray) {
+    return array;
+  }
+
+  return array[0].concat(array.slice(1));
+
 };
 
 // 31. Given a string, return an object containing tallies of each letter.
